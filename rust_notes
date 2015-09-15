@@ -1,0 +1,56 @@
+GENERAL CONCEPTS
+-------/--------
+
+!!! Rust is an ‘expression based’ language, which means that almost everything in Rust is an expression which returns a value.
+This is true of functions as well, the last expression is automatically returned !!!
+
+
+RUST SYNTAX & LOGICS
+----/------
+
+The purpose of Result types is to encode error handling information
+
+Rust allows us to ‘shadow’ the previous binding(variable) with a new one:
+    let mut lineBind = "new line";
+    let lineBind = "brand new line"; //won't fire a panic
+
+match:
+    match guess.cmp(&secret_number) {
+        Ordering::Less    => println!("Too small!"),
+        Ordering::Greater => println!("Too big!"),
+        Ordering::Equal   => println!("You win!"),
+    }
+
+    The cmp() method can be called on anything that can be compared, and it takes a reference to the thing you want to compare it to.
+
+    We use a match statement to determine exactly what kind of Ordering it is. Ordering is an enum.
+
+The loop keyword gives us an infinite loop. By adding the break line, we’ll exit the loop.
+
+
+CONCURRENCY
+----/------
+
+thread::spawn function takes a closure as an argument and executes that closure in a new thread.
+
+
+
+
+
+CARGO
+--/--
+
+Coomands:
+    - "cargo build": compiles the source files and downloads needed dependecies;
+    - "cargo run": builds the project and runs it.
+
+Cargo.lock - is used by Cargo to keep track of dependencies in your application
+
+Dependencies in Cargo.toml:
+    [dependencies]
+    rand="0.3.0"
+
+Crates.io is where people in the Rust ecosystem post their open source Rust projects for others to use
+
+Cargo figures out all of the versions that fit your criteria, and then writes them to the Cargo.lock file. When you build your project in the future, Cargo will see that the Cargo.lock file exists, and then use that specific version rather than do all the work of figuring out versions again. This lets you have a repeatable build automatically. In other words, we’ll stay at 0.3.8 until we explicitly upgrade, and so will anyone who we share our code with, thanks to the lock file
+

@@ -1,0 +1,159 @@
+MAIN CONCEPTS
+-----/-------
+
+Groovy compiles to JVM bytecodes
+
+You can check GDK to see what convenience methods were added
+
+property acces goes through dynamically generated getters and setters
+    myobj.prop = val // uses setProp(val) method
+    x = myobj.prop // uses getProp() method
+
+
+Closures
+--------
+    clousure - an executable block of code, that one can treat as an object
+
+    When a closure does not explicitly define a parameter list (using ->), a
+    closure always defines an implicit parameter, named it. This means that this code:
+        def greeting = { "Hello, $it!" }
+        assert greeting('Patrick') == 'Hello, Patrick!'
+
+     closure actually defines 3 distinct things:
+        "this" corresponds to the enclosing class where the closure is defined
+        "owner" corresponds to the enclosing object where the closure is defined, which may be either a class or a closure
+        "delegate" corresponds to a third party object where methods calls or properties are resolved whenever the receiver of the message is not defined
+
+
+Script class
+------------
+    A script is always compiled into a class. The Groovy compiler will compile the
+    class for you, with the body of the script copied into a run method.
+    The following example:
+        println 'Groovy world!'
+    is therefore compiled as if it was the following:
+        import org.codehaus.groovy.runtime.InvokerHelper
+        class Main extends Script {
+            def run() {
+                println 'Groovy world!'
+            }
+            static void main(String[] args) {
+                InvokerHelper.runScript(Main, args)
+            }
+        }
+
+
+FEATURES
+---/----
+
+double quoted string allows substitution using '$'. '$' is short for ${expression}.
+${expression} must be used if the expression is more than just a simple variable name
+
+Triple single quoted strings are multiline:
+    def aMultilineString = '''line one
+    line two
+    line three'''
+
+For characters that are not present on your keyboard, you can use unicode escape sequences: a backslash, followed by 'u', then 4 hexadecimal digits:
+    'The Euro currency symbol: \u20AC'
+
+Groovy automatically imports
+    java.util.*
+    java.io.*
+    java.net.*
+    java.math.BigInteger, java.math.BigDecimal
+    groovy.lang.*, groovy.util.*
+
+Groovy automatically provides a map-like constructor (example for the Stadium
+class below):
+    new Stadium(name:'Chase Field', team:'ari')
+
+to access elemetns on the other end of an array one can use negative indexes:
+    someArray[-1] // first element from the end
+    someArray[-2] // second element from the end
+
+
+SYNTAX & CONVENIENCE METHODS
+-----------/----------------
+
+def - to define a variable
+
+To define a map you simply do:
+def simpleMap = [cht:'p3',chs:'250x100',chd:'t:60,40',chl:'Hello|World']
+
+Collections#collect { k,v -> "$k=$v" } - "$k=$v" is a clousure, which will be
+applied to every entry in the map. Returns a List
+
+List#join('&') - connects all elements in List, separated by '&' in this case
+
+String#toURL() - transform String into URL
+
+toURL().text calls getter .getText() and returns a text (image, or whatever)
+on this URL
+
+as in imports creates in alias
+    import javax.swing.WindowConstants as WC
+    ...
+    WC.EXIT_ON_CLOSE
+
+defining a class:
+    class Stadium {
+        int id
+        String name
+        String team
+        double latitude
+        double longitude
+
+        String toString() { "($name,$latitude,$longitude)" }
+    }
+
+    - class assumed public
+    - attributes assumed private
+    - methods assumed public
+    - getters, setters, constructors provided as needed
+
+<< to append an element to a collection
+
+Collections#each{ el ->
+    el.someMethod()
+}
+    'el' is a dummy variable; if none is supplied, name 'it' is assumed
+
+#size() method works for everything to get the length
+
+working with XML
+    - dots separate children
+    - @ for attributes
+    // to parse
+    def boxscore = new XMLParser().parse(game_url)
+    def awayName = boxscore.@away_fname
+    def awayScore = boxscore.linescore[0].@away_team_runs
+    def homeName = boxscore.@home_fname
+    // to create an XML
+    import groovy.xml.MarkupBuilder
+    def xml = new MarkupBuilder()
+    xml.games {
+        results.each { g -> //results - a collection of something
+            game(
+                outcome:"$g.away $g.aScore, $g.home, $g.hScore",
+                lat:g.stadium.latitude,
+                lng:g.stadium.longitude,
+            )
+        }
+    }
+    // XML output
+    <games>
+        <game outcome=".." lat=".." lng=".."/>
+        <game outcome=".." lat=".." lng=".."/>
+    </games>
+
+
+GRAILS
+--/---
+
+
+
+
+
+
+
