@@ -1,0 +1,2 @@
+Vectors
+  Bisector of 2 vectors a and b: length(a) * b + length(b) * a 

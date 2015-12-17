@@ -1,6 +1,5 @@
 Terminology
 ----/------
-
 Rigidbody -	a component, that allows an object to be affected by physics.
 	mass: affects how an object responces to collisions with other objects
 	drag: how fast an object loses it''s velocity (stops)
@@ -8,28 +7,30 @@ Rigidbody -	a component, that allows an object to be affected by physics.
 	isKinematic: whether or not a rigigbody will react to physics (if isKinematic is active, an object reactions and behavior can be controlled by a script)
 	iterpolate: used to smooth an object''s movement
 
+MonoBehaviour is the base class/ every script derives from
+Using Javascript every script automatically derives from MonoBehaviour. When using C# or Boo you have to explicitly derive from MonoBehaviour
+
 
 Useful properties, methods, etc.
 --------------/----------------
+Time#deltaTime - the time in seconds it took to complete the last frame (Read Only)
 
-Time.deltaTime - the time in seconds it took to complete the last frame (Read Only)
+#Destory: marks an object to be destroyed at the end of the frame
 
-Destory: marks an object to be destroyed at the end of the frame
+GameObject#FindWithTag (string : tag) - looks for a first GameObject in a scene, that is tagged as *tag*
 
 
 Prefabs
 ---/---
-
 Prefab asset type that allows you to store a GameObject object complete with components and properties. The prefab acts as a template from which you can create new object instances in the scene. Any edits made to a prefab asset are immediately reflected in all instances produced from it but you can also override components and settings for each instance individually.
- 
-Draging an item from the Hierarchy to the Project view, one create a new Prefab asset
+
+By draging an item from the Hierarchy to the Project view, one creates a new Prefab asset
 
 Objects created as prefab instances will be shown in the hierarchy view in blue text (normal objects are shown in black text
 
 
 Colliders
 ----/----
-
 Dynamic and static Colliders
 
 Static colliders - non-moving parts of your scene (the walls, the floor, etc.)
@@ -45,18 +46,24 @@ Any GameObject with collider attached, but no rigid body is considered static
 
 Properties
 ----/-----
-
 If isKinematic is enabled, Forces, collisions or joints will not affect the rigidbody anymore. The rigidbody will be under full control of animation or script control by changing transform.position
+
 
 User Interface (UI)
 ------/------------
+Scripting
+	using UnityEngine.UI
+	Set up canvas after text creation
 
-using UnityEngine.UI
+Editor
+	The Canvas is the area that all UI elements should be inside. The Canvas is a Game Object with a Canvas component on it, and all UI elements must be children of such a Canvas
+
+	Text element
+		pivot (x,y) - a spot inside text element square, for which to count the position
 
 
 Shaders
 ---/---
-
 Diffuse = mat painting
 
 Specular = glossy paint/shining plastic
@@ -65,15 +72,14 @@ Unlit/Texture = just as an original image
 
 Particles/Additive: blacks are 0 and whites are 255; for bright objects (such as laser bolts)
 
-Mobile/.: 
+Mobile/.:
 	eats less resources
 	may give a lower quality output
-	may also leave out some of the full shader features 
+	may also leave out some of the full shader features
 
 
 Unity methods
 -----/-------
-
 Update:
 	- called once per frame for every script, that uses it
 	- used for regural updates:
@@ -86,7 +92,7 @@ FixedUpdate:
 	- called every just BEFORE each Physics Step (on a regural timeline)
 	- used to adjust physics objects (rigid bodies, for example)
 	- for example when adding a force to a rigidbody, you have to apply the force every fixed frame inside FixedUpdate instead of every frame inside Update
-	
+
 
 Player movements
 ------/--------
@@ -106,3 +112,31 @@ Restrict free moving area:
 				0.0f,
 				Mathf.Clamp (rb.position.z, boundary.zMin, boundary.zMax)
 			);
+
+
+Coroutines
+-----/----
+Coroutine functions return IEnumerator type
+
+Return statement is: yield return ...
+
+To start a Coroutine use #StartCoroutine function
+
+
+Audio
+--/--
+3D Sound - a feature to compare a sound''s source positioning with the position of an active audio listener to calculate the appropriate volume and stuff
+
+
+MonoDevelop
+----/------
+Shortcuts
+	control+Space - quick hints
+	control+I - reformat code
+
+
+Techniques
+---/------
+Find an instance of a GameObject
+	use GameObject#FindWithTag to find the first GameObject with a given tag in a scene
+	to access a component (for example, a script), use gameObject#GetComponent <class_that_extends_MonoBehavior>

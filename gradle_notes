@@ -10,7 +10,7 @@ Tasks have a set of actions:
     doFirst
     doLast
 
-    The actions are added in the action queue (doFirst goes firstm, doLast goes last)
+    The actions are added in the action queue (doFirst goes first, doLast goes last)
 
 A task action can abort execution of the action and continue to the next action of the task by throwing a StopActionException. A task action can abort execution of the task and continue to the next task by throwing a StopExecutionException.
 
@@ -36,3 +36,34 @@ assemble
 check
     Compiles and tests your code. Other plugins add more checks to this task. For example, if you use the checkstyle plugin, this task will also run Checkstyle against your source code.
 
+
+--//--
+CPP
+--//--
+
+Project Structure
+------/----------
+gradle-cpp:	Root directory.
+
+  build.gradle:	File where is configured Gradle project, it is the equivalent to: build.xml for Ant, Makefile for C/C++ or pom.xml for Maven.
+
+  src:	Folder where the source code is located.
+
+    hello:	This folder contains the module hello. This module will generate hello library.
+
+      cpp:	This folder contains C++ source files.
+
+        Hello.cpp:	File with the implementation of Hello class.
+
+      headers:	Folder with header files.
+
+      Hello.h:	Class Hello declaration.
+      Msg.h:	File with constants declarations.
+
+    main:	This folder contains the module which produces the executable that uses hello library.
+
+      cpp: This folder contains C++ source files.
+
+        main.cpp:	Source code of main function.
+
+  build:	Folder created automatically by Gradle where it leaves all execution results like unit tests reports, compiled files, package distributions, etc.
