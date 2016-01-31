@@ -10,6 +10,9 @@ VECTOR
 
     std::copy(path.begin(), path.end(), std::ostream_iterator<char>(std::cout, " "));
 
+    size - the number of actual elements in vector
+    capacity - preallocated possible number of elements in vector (>= size). Can be expanded using .reserve() method
+
   'accessing elements'
       vectorName[position]
       vectorName.at(position)
@@ -78,6 +81,7 @@ SWITCH
 
   when defining a new variable brackets should be used to define new scope {}
 
+  if none of the cases are correct, the default statement is executed
 
 OOP (Object-oriented programming)
 -----------------/---------------
@@ -119,8 +123,14 @@ MACROS
   'define'
     =text replacement
     #define D 3 //interpreted at before compilation, all D occurences in code are replaces by 3
+
   'pragma push/pop'
-    tells the compiler to start packing as tightly as possible from now on aligning at multiples of n bytes, stopping at #pragma pack(pop)
+    tells the compiler to start packing as tightly as possible from now on aligning at multiples of n bytes, stopping at #pragma /pack(pop)
+
+  #ifndef H_IDENTIFIER
+  #define H_IDENTIFIER
+  #endif
+    the structure is called 'include guards'; prevents repetative includes, making them indempotent
 
 
 COMPILER FLAGS
@@ -163,7 +173,27 @@ POINTERS, REFERENCES, ADDRESSES OF
     safer than pointers, for they do point to some valid spot in memory
     reference cannot be declared without the initiallization
   'const-reference'
-  void efficientFoo(const &A a) {...} // the function won't be able to change the A object inside
+    void efficientFoo(const &A a) {...} // the function won't be able to change the A object inside
+
+  'SMART POINTERS'
+    unique_ptr
+      Copy assignment operator is implicitly deleted
+      Example:
+      std::unique_ptr<Foo> p1(new Foo);  // p1 владеет Foo
+      std::unique_ptr<Foo> p2(std::move(p1));  // теперь p2 владеет Foo
+      p1 = std::move(p2);  // владение возвращено p1
+
+    auto_ptr
+      No array allocation supported (will just call 'delete' not 'delete[]')
+      Example:
+      std::auto_ptr<A> a1(new A);
+      std::auto_ptr<A> a2(a1); // a2 point to the object, a1 is null
+      a1->foo(1); // error!
+      a2->foo(1); // all good
+      a1 = a2; // a1 point to the object, a2 is null
+      a2->foo(1); // error!
+      std::auto_ptr<A> a3 (new int[3]); // will still call delete, not delete[]
+
 
 
 
@@ -222,6 +252,11 @@ ARRAYS
 
  &arrName == arrName
 
+ In a 'function declaration', it is also possible to include 'multidimensional arrays'. The format for a tridimensional array parameter is:
+  base_type[][depth][depth]
+  void procedure (int myarray[][3][4])
+  Notice that 'the first brackets [] are left empty', while the following ones specify sizes for their respective dimensions
+
 
 STRUCTS
 --/----
@@ -244,3 +279,21 @@ STRING
 DECLARATION & DEFINITION
 ----------/-------------
   if the value of declared variable is not given explicitly its value is not defined (aka garbage)
+
+
+STATIC
+---/--
+  inside a 'fucntion': static int count = 0; // the line is executed once and the variable remains in memory until the programm finishes
+
+  extern
+    When modifying a variable, extern specifies that the variable has static duration (it is allocated when the program begins and deallocated when the program ends).
+    The variable or function may be defined in another source file, or later in the same file.
+    Declarations of variables and functions at file scope are extern-al by default.
+
+
+OPERATORS
+----/----
+  to explicitly restrict the usage of an operator use the following syntax:
+    void operator=(UniquePointer& uptr) = delete;
+
+  it is exactly 'as efficient as a raw pointer' and can be used in STL containers
