@@ -182,6 +182,11 @@ Rigging & Bones
     subdivide - to subdiv the bone
   Ctrl + N: Recalculate the Bone Roll
 
+  Forward & Inverse Kinematics
+  ----------------------------
+    forward - whatever you select everything in-front of it will move with it
+
+
   Pose Mode
   ---------
     Alt + S / G / R: resets Scaling, Transition and Rotations of the bones
