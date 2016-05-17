@@ -4,7 +4,7 @@ Adding a semicolon to the end of a command will suppress the output, though the 
 
 Try pressing the Up arrow to return to the previous command
 
-Name your MATLAB variables anything you'd like as long as they start with a letter and contain only letters, numbers, and underscores (_).
+Name your MATLAB variables anything you''d like as long as they start with a letter and contain only letters, numbers, and underscores (_).
 
 'clear' to clear all the variables in a workspace
 
@@ -63,6 +63,8 @@ The * operator performs matrix multiplication. The .* operator, in contrast, per
 z = 
     30    80
     
+Use the 'numel' function to return the number of elements in an array.
+    
 #function overloading in terms of return values (treir numbers)
 The size function can be applied to an array to produce a single output variable containing the array size. 
 >> s = size(x)
@@ -78,7 +80,38 @@ You can enter
 >> doc fcnName
 to get information on any MATLAB function.
 
+#plots
+Two vectors of the same length can be plotted against each other using the plot function.
+>> plot(x,y)
 
+##line style
+The plot function accepts an additional argument that allows you to specify the color, line style, and marker style using different symbols in single quotes.
+>> plot(x,y,'r--o')
+The command above plots a red (r) dashed (--) line with a circle (o) as a marker. You can learn more about the symbols available in the documentation for Line Specification.
+Another example: black (k), square (s), no line - 'ks'
+
+The plot function accepts optional additional inputs consisting of a property name and an associated value.
+>> plot(y,'LineWidth',5)
+The command above plots a heavy line
+##line style
+
+To 'plot one line on top of another', use the hold on command to hold the previous plot while you add another line. You can also use the hold off command to return to the default behavior.
+
+Close all open figure windows by issuing the 'close all' command.
+
+When you 'plot a single vector by itself', MATLAB uses the vector values as the y-axis data and sets the x-axis data to range from 1 to n (the number of elements in the vector).
+The plot function accepts a property name and property value pair after the plotted arguments and line specifier.
+
+##plot labels
+Labels can be added to plots using 'plot annotation functions', such as title. The input to these functions is a string. Strings in MATLAB are enclosed in single quotes (').
+>> title('Plot Title')
+
+Use the 'ylabel' function to add the Y-axis label
+
+Use the legend function to specify a legend.
+>> legend('a','b','c')
+##plot labels
+#plots
 
 
 SAVING/LOADING
