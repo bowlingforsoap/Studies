@@ -23,6 +23,7 @@ z =
    
 All MATLAB 'variables are arrays', meaning that each variable can contain multiple elements. A single number, called a scalar, is actually a 1-by-1 array, meaning it contains 1 row and 1 column.
 
+#array_manipulation
 When you separate numbers by spaces (or commas), MATLAB combines the numbers into a row vector, which is an array with one row and multiple columns (1-by-n). When you separate them by semicolons, MATLAB creates a column vector (n-by-1)
 >> x = [1;3].
 
@@ -63,7 +64,17 @@ The * operator performs matrix multiplication. The .* operator, in contrast, per
 z = 
     30    80
     
-Use the 'numel' function to return the number of elements in an array.
+Use the "numel" function to return the number of elements in an array.
+
+You can use a "logical array as an array index", in which case MATLAB extracts the array elements where the index is true. The following example will extract all elements in v1 that are greater than six.
+>> v = v1(v1 > 6)
+v =
+    6.6678
+    9.0698
+    
+You can use "logical indexing to reassign values in an array". For example, if you wish to replace all values in the array, x that are equal to 999 with the value 0, use the following syntax.
+x(x==999) = 0
+#array_manipulation
     
 #function overloading in terms of return values (treir numbers)
 The size function can be applied to an array to produce a single output variable containing the array size. 
@@ -113,6 +124,19 @@ Use the legend function to specify a legend.
 ##plot labels
 #plots
 
+#conditions_and_loops
+Each if statement must contain one if keyword and one end keyword, and code between the if and end keywords is executed only when the condition is met.
+    x = rand;
+    if x > 0.5
+        y = 3; %Executed only if x > 0.5
+    end
+    
+A common programming task is to execute a section of code repeatedly. In MATLAB, you can do this with a for loop.
+    for i = 1:3
+        disp(i)
+    end
+Notice that the "for loop" contains a single end keyword, similar to if statements. When this code is run, the code between the for and end keywords will be executed three times in this case, as the loop counter (i) progresses from 1:3 (1, 2, and 3).
+#conditions_and_loops
 
 SAVING/LOADING
 ==============
