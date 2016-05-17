@@ -1,3 +1,5 @@
+!!! INDICES START FROM 1 (not 0) !!!
+
 Adding a semicolon to the end of a command will suppress the output, though the command will still be executed, as you can see in the Workspace
 
 Try pressing the Up arrow to return to the previous command
@@ -28,6 +30,9 @@ When you separate numbers by spaces (or commas), MATLAB combines the numbers int
 >> x = 20:2:26
 x = 
     20    22    24    26
+The 'colon operator'can refer to a range of values. The following syntax creates a matrix containing the first, second, and third rows of the matrix A.
+>> x = A(1:3,:)
+
     
 If you know the number of elements you want in a vector (instead of the spacing between each element), you could instead use the linspace function: linspace(first,last,number_of_elements). Note the use of commas (,) to separate inputs to the linspace function.
 >> x = linspace(0,1,5)
@@ -52,6 +57,27 @@ x =
     0.0975    0.5469    0.9649
     
 'zeros' function to create a matrix of all zeros
+
+The * operator performs matrix multiplication. The .* operator, in contrast, performs elementwise multiplication and allows you to multiply the corresponding elements of two equally sized arrays.
+>> z = [3 4] .* [10 20]
+z = 
+    30    80
+    
+#function overloading in terms of return values (treir numbers)
+The size function can be applied to an array to produce a single output variable containing the array size. 
+>> s = size(x)
+The size function can be applied to a matrix to produce either a single output variable or two output variables. Use square brackets ([ ]) to obtain more than one output.
+>> [xrow,xcol] = size(x)    
+
+The maximum value of a vector and its corresponding index value can be determined using the max function. The first output from the max function is the maximum value of the input vector. When called with two outputs, the second output is the index value.
+>> [xMax,idx] = max(x)
+#function overloading in terms of return values (treir numbers)
+
+#Documentation
+You can enter 
+>> doc fcnName
+to get information on any MATLAB function.
+
 
 
 
