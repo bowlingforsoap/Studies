@@ -1,3 +1,8 @@
+GENERAL
+---/---
+system('pause'); // pause program (e.g. to keep a console program from exiting afer it finishes)
+
+
 VECTOR
 ---/--
   'format': vector<DataType> nameOfVector
@@ -25,6 +30,7 @@ VECTOR
     #erase(vectorName.begin() + index, new value) - erases an element at the index position and shifts the following values
     #clear() - clears the vector from all of its elements
     #empty() - returns true or false depending on the contents of the vector
+    #end() - returns an iterator referring to the 'past-the-end element' in the vector container.
 
 
   EXCEPTIONS
@@ -82,6 +88,7 @@ SWITCH
   when defining a new variable brackets should be used to define new scope {}
 
   if none of the cases are correct, the default statement is executed
+
 
 OOP (Object-oriented programming)
 -----------------/---------------
@@ -178,6 +185,7 @@ POINTERS, REFERENCES, ADDRESSES OF
   'SMART POINTERS'
     unique_ptr
       Copy assignment operator is implicitly deleted
+      a non-null unique pointer always owns what it points to
       Example:
       std::unique_ptr<Foo> p1(new Foo);  // p1 владеет Foo
       std::unique_ptr<Foo> p2(std::move(p1));  // теперь p2 владеет Foo

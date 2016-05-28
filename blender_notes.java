@@ -182,9 +182,23 @@ Rigging & Bones
     subdivide - to subdiv the bone
   Ctrl + N: Recalculate the Bone Roll
 
+  Constraints
+    bones turn yellowe/greenish when they are constrained
+
+    Inverse Kinematics constraint (Shift + I)
+      chain length - the number of bones to affect
+        0: infinity
+        target: target thing (e.g. Armature)
+        bone: the bone to constrain
+      the behavior of the joints can be mimicted also by manipulated by slightly displasing the joint in the direction you want it to bend
+    Copy Rotation
+      make the subject copy the rotation of the target
+
+
   Forward & Inverse Kinematics
   ----------------------------
     forward - whatever you select everything in-front of it will move with it
+    IK bones should not Deform the mesh (Bone -> Deform should be left unchecked)
 
 
   Pose Mode
@@ -196,3 +210,23 @@ Rigging & Bones
       green: 50%
       T -> choose brushes
       Face & Vertex Selection mode to restrict the regions affected by the painting
+
+
+Animation tips
+-----/--------
+  body bends less in the ribcage area
+  humans rotate from the top of the hip bone
+
+
+Sculpting
+---/-----
+  Shift + S: lazy stroke to make a stroke fall behing but nicely smooth the line
+
+
+Physics properties
+--------/---------
+  Cloth
+    Cloth Sewing Springs: a way to restrict the movement of the cloth by literally sewing it (can be used as neck ropes for the cape e.g.)
+    Solidify moifier can be used to give cloth some depth (apply afte the cloth)
+      Material Index: set different materials for generated faces & the old ones (flip normals to swap)
+    Subsurf can be applied after cloth to be used for collisions

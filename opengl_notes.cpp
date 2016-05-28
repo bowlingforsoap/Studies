@@ -19,3 +19,17 @@ to minimize copy overhead'.
   Graphics pipeline parts:
     1. front-end (vector; vertex)
     2. back-end (discrete; pixel)
+
+'Orthographic projection' - involves no persperctive /correction (the object on screen will remain the same size regardless of its distance from the camera)
+
+
+Functions
+----/----
+The 'glBegin' and 'glEnd' functions delimit the list of vertices corresponding to a desired /primitive (e.g. GL_POINTS). The glBegin function accepts a set of symbolic constants that represent different drawing methods, including GL_POINTS, GL_LINES, and GL_TRIANGLES.
+
+We can 'set the diameter of each point (in pixels)' with the glPointSize function. By default, a point has a diameter of 1 without anti-aliasing (a method to smooth sampling artifacts) enabled.
+
+'glOrtho'
+  set up an orthographic projection
+
+  'glOrtho' function takes these 'parameters': the coordinates of the vertical clipping plane, the coordinates of the horizontal clipping plane, and the distance of the nearer and farther depth clipping planes. These parameters determine the projection matrix
