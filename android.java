@@ -114,4 +114,12 @@ Shaders
 
 JNI
 ---
+Steps:
+1. Set android.useDeprecatedNdk = true in gradle.properties (http://stackoverflow.com/questions/31979965/after-updating-android-studio-to-version-1-3-0-i-am-getting-ndk-integration-is)
+2. Create a class containing JNI public static native void function names
+3. Build the project
+4. Navigate to the folder containing the .class files and use javah (javah full.qualified.class.Name) to generate a corresponding native interface header file with functions with correct (more like fucked up) names (as specified here:
 http://stackoverflow.com/questions/19365853/javah-error-cannot-find-class-file
+[if the one ontop doesn't help: http://stackoverflow.com/questions/986262/javah-error-while-using-it-in-jni])
+5. For build-ndk to work, use APP_PLATFORM := here_goes_the_sdk_version?/*not sure*/ (23 worked fine)
+
