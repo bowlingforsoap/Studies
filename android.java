@@ -122,4 +122,12 @@ Steps:
 http://stackoverflow.com/questions/19365853/javah-error-cannot-find-class-file
 [if the one ontop doesn't help: http://stackoverflow.com/questions/986262/javah-error-while-using-it-in-jni])
 5. For build-ndk to work, use APP_PLATFORM := here_goes_the_sdk_version?/*not sure*/ (23 worked fine)
+6. Add:
+android.sourceSets {
+    main {
+        jni.srcDirs = [] // tells gradle not to build NDK on it's own
+        jniLibs.srcDir 'src/main/libs' // specifies the directory with the compiled ndk code
+    }
+}
+to the module's build.gradle.
 
