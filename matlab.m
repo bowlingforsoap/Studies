@@ -138,6 +138,9 @@ A common programming task is to execute a section of code repeatedly. In MATLAB,
 Notice that the "for loop" contains a single end keyword, similar to if statements. When this code is run, the code between the for and end keywords will be executed three times in this case, as the loop counter (i) progresses from 1:3 (1, 2, and 3).
 #conditions_and_loops
 
+#assign #assignin #variable #workspace
+assignin(ws, 'var', val) assigns the value val to the variable var in the workspace ws. The var input must be the array name only, it cannot contain array indices. If var does not exist in the specified workspace, assignin creates it. ws can have a value of 'base' or 'caller' to denote the MATLAB® base workspace or the workspace of the caller function.
+
 SAVING/LOADING
 ==============
 You can save variables in your workspace to a MATLAB specific file format called a MAT-file using the save command.
