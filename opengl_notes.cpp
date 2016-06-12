@@ -6,6 +6,22 @@ A Framebuffer is a collection of buffers that can be used as the destination for
 
 GLU - OpenGL Utility Library
 
+
+Working Sequence
+------/---------
+1. setup window management with GLFW (OpenGL doesn't contain code for window handling)
+- glfwInit() (check validity)
+- create window (check validity)
+- make the window current context
+- set the main loop with glfwWindowShouldClose and swap buffers, poll events there
+- deinitialize window and glfw when done
+- (optionally) set a callback on frame buffer size change and change viewport and projection matrix there
+2. OpenGL stuff: programm the rendering loop
+- glMatrix(GL_MODEL_VIEW_MATRIX)
+- -||- (GL_PROJECTION)
+- glColor..
+- *draw*
+
 Concepts
 ----/---
   OpenGL Implements a Client-Server Model
