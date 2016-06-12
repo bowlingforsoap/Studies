@@ -1,3 +1,11 @@
+Dictionary
+----/----
+GLEW: The OpenGL Extension Wrangler Library
+
+A Framebuffer is a collection of buffers that can be used as the destination for rendering
+
+GLU - OpenGL Utility Library
+
 Concepts
 ----/---
   OpenGL Implements a Client-Server Model
