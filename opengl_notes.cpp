@@ -57,3 +57,20 @@ We can 'set the diameter of each point (in pixels)' with the glPointSize functio
   set up an orthographic projection
 
   'glOrtho' function takes these 'parameters': the coordinates of the vertical clipping plane, the coordinates of the horizontal clipping plane, and the distance of the nearer and farther depth clipping planes. These parameters determine the projection matrix
+
+
+Textures
+---/----
+We get the shader locations for the texture data and texture coordinates. In OpenGL, textures need to be bound to texture units before they can be used in rendering. A texture unit is what reads in the texture and actually passes it through the shader so it can be displayed on the screen. Different graphics chips have a different number of texture units, so you’ll need to check if additional texture units exist before using them.
+First, we tell OpenGL that we want to set the active texture unit to the first unit, texture unit 0. Our call to glBindTexture() will then automatically bind the texture to the first texture unit. Finally, we tell OpenGL that we want to bind the first texture unit to the mTextureUniformHandle, which refers to “u_Texture” in the fragment shader.
+  // Set the active texture unit to texture unit 0.
+  GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
+  // Bind the texture to this unit.
+  GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, mTextureDataHandle);
+  // Tell the texture uniform sampler to use this texture in the shader by binding to texture unit 0.
+  GLES20.glUniform1i(mTextureUniformHandle, 0);
+
+In short:
+1. Set the active texture unit.
+2. Bind a texture to this unit.
+3. Assign this unit to a texture uniform in the fragment shader.
