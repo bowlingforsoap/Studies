@@ -113,6 +113,9 @@ Restrict free moving area:
 				Mathf.Clamp (rb.position.z, boundary.zMin, boundary.zMax)
 			);
 
+Make camera follow with a lag:
+	use Vectro3.Lerp(...) to linearly interpolate between the Camera position and Player position with interpolation factor 't'
+
 
 Coroutines
 -----/----
