@@ -105,7 +105,7 @@ Ways to move an object:
 	rigidbody.velocity =  new Vector3(moveHorizontal * speed, 0.0f, moveVertical * speed);
 
 Restrict free moving area:
-	Use Mathf.Clamp to clamp position values in a desider range:
+	Use Mathf.Clamp to clamp position values in a desired range:
 		rb.position = new Vector3
 			(
 				Mathf.Clamp (rb.position.x, boundary.xMin, boundary.xMax),
@@ -140,3 +140,22 @@ Techniques
 Find an instance of a GameObject
 	use GameObject#FindWithTag to find the first GameObject with a given tag in a scene
 	to access a component (for example, a script), use gameObject#GetComponent <class_that_extends_MonoBehavior>
+
+
+Animations
+---/------
+1. Create Animator Controller in Project and attach as "Animator" Component to the object.
+2. Window -> Animator: a state machine to controll animations.
+3. Drag the animations from project into Animator.
+// Orange: Layer Default State.
+4. "Make Transition"s between the states based on Parameters.
+//Trigger - bool, which flips back to false.
+TODO: check "Has Exit Time", causes animations not to play
+5. Get Animator component in script and set it's parameters to manipulate animations.
+
+
+Raycasting
+-----/----
+1. Create a ray (e.g. from Camera.main)
+2. Physics.Raycast(..) (e.g. into a certain LayerMask with a certain ray length)
+(optional) 3. Create vector from Player to Intersection, convert to Quaternion.LookRotation(..) to rotate player in a direction of intersection.
