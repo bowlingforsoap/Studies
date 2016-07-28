@@ -18,6 +18,7 @@ Time#deltaTime - the time in seconds it took to complete the last frame (Read On
 #Destory: marks an object to be destroyed at the end of the frame
 
 GameObject#FindWithTag (string : tag) - looks for a first GameObject in a scene, that is tagged as *tag*
+	fairly inefficient
 
 
 Prefabs
@@ -60,6 +61,11 @@ Editor
 
 	Text element
 		pivot (x,y) - a spot inside text element square, for which to count the position
+		
+RectTransform
+	Transform for UI elements
+	Pivot - for rotations and scale
+	Anchors - for different displacement schemes 
 
 
 Shaders
@@ -142,19 +148,23 @@ Techniques
 ---/------
 Find an instance of a GameObject
 	use GameObject#FindWithTag to find the first GameObject with a given tag in a scene
-	to access a component (for example, a script), use gameObject#GetComponent <class_that_extends_MonoBehavior>
+	to access a component (for example, a script), use gameObject#GetComponent <class_that_extends_MonoBehavior | name_of_component>
 
 
 Animations
 ---/------
-1. Create Animator Controller in Project and attach as "Animator" Component to the object.
-2. Window -> Animator: a state machine to controll animations.
-3. Drag the animations from project into Animator.
-// Orange: Layer Default State.
-4. "Make Transition"s between the states based on Parameters.
-//Trigger - bool, which flips back to false.
-TODO: check "Has Exit Time", causes animations not to play
-5. Get Animator component in script and set it's parameters to manipulate animations.
+Workflow:
+	1. Create Animator Controller in Project and attach as "Animator" Component to the object.
+	2. Window -> Animator: a state machine to controll animations.
+	3. Drag the animations from project into Animator.
+	// Orange: Layer Default State.
+	4. "Make Transition"s between the states based on Parameters.
+	//Trigger - bool, which flips back to false.
+	TODO: check "Has Exit Time", causes animations not to play
+	5. Get Animator component in script and set it's parameters to manipulate animations.
+
+Events during the animation
+	Select your model with animation in Project -> Events -> Add Event -> Choose the name of the function to call
 
 
 Raycasting
