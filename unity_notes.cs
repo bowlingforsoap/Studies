@@ -67,6 +67,8 @@ RectTransform
 	Pivot - for rotations and scale
 	Anchors - for different displacement schemes 
 
+Ordering UI elements (visibility sort)
+	Reverse to PhotoShop (bottom -> on the surface)
 
 Shaders
 ---/---
@@ -153,7 +155,7 @@ Find an instance of a GameObject
 
 Animations
 ---/------
-Workflow:
+Animator Controller Workflow:
 	1. Create Animator Controller in Project and attach as "Animator" Component to the object.
 	2. Window -> Animator: a state machine to controll animations.
 	3. Drag the animations from project into Animator.
@@ -162,6 +164,13 @@ Workflow:
 	//Trigger - bool, which flips back to false.
 	TODO: check "Has Exit Time", causes animations not to play
 	5. Get Animator component in script and set it's parameters to manipulate animations.
+	
+Animation Workflow:
+	1. Window -> Animation
+	2. Select the to-be animated GameObject in Hierarchy -> Animation Window -> Create animation
+	3. Add Property for each property you wanna animate
+// Red Play game buttons means you in Record Mode (everything you change gonna be key-framed)
+// Looping can be turned of in Inspector with Animation selected in Project?
 
 Events during the animation
 	Select your model with animation in Project -> Events -> Add Event -> Choose the name of the function to call
