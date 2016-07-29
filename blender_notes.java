@@ -151,9 +151,12 @@ UV/Image Editor
 
 Animation
 ----/----
-  to create Key Frames, press the recording button - key frames will be automatically inserted on the change in postions & etc. (the Key Frame is inserted for LocRotScale)
+  (do not press the fucking button, do manually) to create Key Frames, press the recording button - key frames will be automatically inserted on the change in postions & etc. (the Key Frame is inserted for LocRotScale)
 
-  I -> choose the Type Of Frame to insert (to Manually Insert a Frame)
+  Workflow:
+    1. Switch to animation layout
+    2. Position bones as you like
+    3. I -> (e.g. LocRot [aka Location + Rotation, usually enough for bones]) choose the Type Of Frame to insert (to Manually Insert a Frame)
 
 
   Dope Sheet editor
@@ -161,7 +164,7 @@ Animation
     Scaling of the keayframes is done relative to the  Play Head (green line with the number of the frame)
 
   Graph Editor
-    ssed to Alter the Interpolation between the key frames
+    Used to Alter the Interpolation between the key frames
     Normalize checkbox to scale everything (all the curves) down to the same size (basically, normalize ;)
     choose Interpolation Type: T -> Linear | Constant | Bezier Curve | etc.
 
@@ -186,11 +189,28 @@ Rigging & Bones
     bones turn yellowe/greenish when they are constrained
 
     Inverse Kinematics constraint (Shift + I)
+      Workflow:
+        1. Setup the bones as usual (setup only one side, then use Mirror Bones Constraint or modifier, or whatever)
+        2. Use X-Mirror constraint to save time (stuff is applied to both sides)
+        3. Parent Mesh to Armature (with automatic weight works alright for natural objects)
+          - to select bones in Weight Paint Mode:
+            -> Pose mode select a bone (or select whatever) 
+            -> Mesh Weight Paint mode 
+            -> (Ctrl + LMB) on the bone to select (prior: right selection mode [there're only 2] selected in Weight Paint mode)
+        4. Create IK bones (uncheck Connected and Deform tab)
+        5. Create IK poles to control how the joints bend (place at direction, where the joint looks when bend)
+        6. In Pose mode add Inverse Kinematics constraint
+          - Taget - Armeture
+          - Bone - IK bone
+          - Pole Target - Armature
+          - Pole - IK pole
+          - Chain Length - how many bones from the tip to affect
+      
+      for more than 2-bones IK, apply IK constraint to 2nd bone in chain and parent the 2 IKs to a new control bone 
       chain length - the number of bones to affect
         0: infinity
-        target: target thing (e.g. Armature)
-        bone: the bone to constrain
       the behavior of the joints can be mimicted also by manipulated by slightly displasing the joint in the direction you want it to bend
+      
     Copy Rotation
       make the subject copy the rotation of the target
 
