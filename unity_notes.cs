@@ -138,6 +138,28 @@ Audio
 --/--
 3D Sound - a feature to compare a sound''s source positioning with the position of an active audio listener to calculate the appropriate volume and stuff
 
+Audio Editing
+	Attenuation - sound level
+	Snapshot - a state of AudioMixer (essentially, a preset)
+		- example of snapshots: paused (music volume preset when paused), unpaused
+		- change AudioMixer's properties when Snapshot is selected to affect this Snapshot
+		- use AudioMixerSnapshot#transitionTo(float numSeconds) to tansition to subject Snapshot in numSeconds
+	
+
+	Workflow:
+		1. In Project create AudioMixer then Window -> AudioMixer to open the editor window
+		2. Create groups to group soundfx (Music, Sfx, etc.)
+			- to link AudioMixer to Group in another AudioMixed: drag one onto another -> choose the group
+		3. "Add.." to Add Effects (see below)
+		4. RMB -> Expose ".." to script, to make any of the Inspector parameters acceseble through scripting
+			- use AudioMixer#SetFloat to change the value in the script
+			- check Exposed parameters in right corner of AudioMixer Window
+	
+	Effects
+		Send - sends output of one group to another
+		Duck Volume - cut volume, when sound data from other Group's Send is above Threshold
+		Lowpass Simple - attenuate (cut) the sound, when above threshold
+
 
 MonoDevelop
 ----/------
