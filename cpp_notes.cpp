@@ -208,11 +208,28 @@ POINTERS, REFERENCES, ADDRESSES OF
 
 FUNCTIONS
 ---/-----
+  argument - an object passed to the fuction
+  parameter - an object defined in the function's description
+    fuu(int a): a - parameter
+    fuu(1): 1 - argument
+    
+  'pass-by-value'
+    the argument is copied (~? not a deep copy)
+  'pass-by-reference'
+    function operates with the reference to the argument (aka the argument itself)
+   'pass-by-reference Java'
+    copy of a pointer is stored in the parameter, so that the change of the parameter''s contents leads to change in the argument, but what argument points to cannot be reassigned:
+      static void accept_reference(Example e) { // :1
+        e.value++; // will change the referenced object (argument)
+        e = null; // will only change the parameter
+    }
+    
+
   'overloading'
     everything but the name defines a 'signature' for a function
     if theres a const and a non-const functions, C/C++ chooses the const one
 
-  default arguments are allower
+  default arguments are allowed
     void foo(int a = 1) {....}
     void foo() {...} // error, because the compiler wouldnt know what to call: the first function or this
 
