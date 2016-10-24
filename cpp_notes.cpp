@@ -1,3 +1,7 @@
+DICTIONARY
+----/-----
+POD (Plain Old Data) type
+
 GENERAL
 ---/---
 system('pause'); // pause program (e.g. to keep a console program from exiting afer it finishes)
@@ -147,6 +151,8 @@ COMPILER FLAGS
 
 TYPES
 --/--
+  ~? basic types are not initialized
+
   'auto' - let compiler decide on the type itself
   'double':
     8 bytes = 64 bits
