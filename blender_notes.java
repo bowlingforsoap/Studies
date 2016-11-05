@@ -242,6 +242,15 @@ Sculpting
 ---/-----
   Shift + S: lazy stroke to make a stroke fall behing but nicely smooth the line
 
+Video Editing
+------/------
+  Shift + A in Video Sequence Editor - add a movie clip
+  Shift + S - snap to 'timestamp' 
+  
+  Render:
+    1 Toggle Sequencer in Render Settings to Switch from rendering 3D
+    2 Render Animation
+                                                                               
 
 Physics properties
 --------/---------
@@ -250,3 +259,5 @@ Physics properties
     Solidify moifier can be used to give cloth some depth (apply afte the cloth)
       Material Index: set different materials for generated faces & the old ones (flip normals to swap)
     Subsurf can be applied after cloth to be used for collisions
+    
+    
