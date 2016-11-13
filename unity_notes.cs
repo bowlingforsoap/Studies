@@ -179,12 +179,12 @@ Animations
 ---/------
 Animator Controller Workflow:
 	1. Create Animator Controller in Project and attach as "Animator" Component to the object.
-	2. Window -> Animator: a state machine to controll animations.
+	2. Select Window -> Animator: a state machine to controll animations.
 	3. Drag the animations from project into Animator.
 	// Orange: Layer Default State.
 	4. "Make Transition"s between the states based on Parameters.
 	//Trigger - bool, which flips back to false.
-	TODO: check "Has Exit Time", causes animations not to play
+	TODO: check "Has Exit Time" (causes animations not to play)
 	5. Get Animator component in script and set it's parameters to manipulate animations.
 	
 Animation Workflow:
@@ -196,6 +196,13 @@ Animation Workflow:
 
 Events during the animation
 	Select your model with animation in Project -> Events -> Add Event -> Choose the name of the function to call
+	
+GameObjects for animation
+	AnimatiorOverrideController - allows to use an existing controller, but spoof animations for the new ones (good for similar enemies, for example).
+		Workflow:
+		1. Create -> Animator Override Controller.
+		2. Choose the base Animator Controller and the spoof the animations.
+		3. Don''t forget to the Animator Override controller to Animator.
 
 
 Raycasting
@@ -203,3 +210,9 @@ Raycasting
 1. Create a ray (e.g. from Camera.main)
 2. Physics.Raycast(..) (e.g. into a certain LayerMask with a certain ray length)
 (optional) 3. Create vector from Player to Intersection, convert to Quaternion.LookRotation(..) to rotate player in a direction of intersection.
+										      
+
+2D
+-/-
+Sprite Renderer -> Sorting Layers
+	Used to define Rendering Sequence (what goes on top what, i.e.: Floor, Player, Items, etc)
