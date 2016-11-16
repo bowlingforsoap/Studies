@@ -119,6 +119,14 @@ Shaders
 =======
 'Compiling' OpenGL ES 'shaders and linking programs is expensive' in terms of CPU cycles and processing time, so you should avoid doing this more than once.
 
+===
+NDK
+===
+ABIs can be set in 3 places:
+  1. Gradle (android.defaultConfig.ndk.abiFilters);
+  2. Application.mk (APP_ABI);
+  3. Android.mk (TARGET_ARCH_ABI).
+
 JNI
 ---
 Steps:
