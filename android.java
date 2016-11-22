@@ -1,6 +1,8 @@
 Dictionary
 ==========
 An 'activity' is a single, focused thing that the user can do. Almost all activities interact with the user, so the Activity class takes care of creating a window for you in which you can place your UI with setContentView(View). While activities are often presented to the user as full-screen windows, they can also be used in other ways: as floating windows (via a theme with windowIsFloating set) or embedded inside of another activity (using ActivityGroup).
+  
+'Build Tools' is a component of the Android SDK required for building Android application code and is installed in the <sdk>/build-tools/ directory.
 
   
 (res/)R(.java)
@@ -32,6 +34,8 @@ Application context
 
 Activity
 ========
+Lifecycle: https://developer.android.com/images/training/basics/basic-lifecycle.png
+
 The Activity class /is a subclass /of Context
 
 All subclasses of Activity must implement the onCreate() method. This method is where the activity receives the intent with the message, then renders the message. Also, the onCreate() method must define the activity layout with the setContentView() method. This is where the activity performs the initial setup of the activity components.
@@ -49,7 +53,11 @@ Intent
 An Intent is an object that provides runtime binding between separate components (such as two activities). The Intent represents an app’s "intent to do something." You can use intents for a wide variety of tasks, but most often they’re used to start another activity. For more information, see Intents and Intent Filters.
 
 Example:
-Intent intent = new Intent(this, DisplayMessageActivity.class); //this is used because the code is inside an Activity class, which is a subclass of Context
+  Intent intent = new Intent(this, DisplayMessageActivity.class); //this is used because the code is inside an Activity class, which is a subclass of Context
+
+Start an Intent:
+  startService(downloadIntent) - for explicit (when you specify the class, like above)
+  startActivity(sendIntent) - implicit (checks all installed apps)
 
 An Intent can carry data types as key-value pairs called extras. The putExtra() method takes the key name in the first parameter and the value in the second parameter.
 It's generally a good practice to define keys for intent extras using your app's package name as a prefix. This ensures the keys are unique, in case your app interacts with other apps.
@@ -152,3 +160,9 @@ Naming convention
 =================
   'm' prefix stand for 'member' to indicate that a variable is a member of a class (i.e. for cases when you dont use an IDE).
 
+ 
+MetaIO
+--/---
+  Creating a new project:
+  1. Create as usual
+  2. Import metaioSDK module: MetaioSDK/_Android/metaioSDK
