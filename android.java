@@ -3,6 +3,10 @@ Dictionary
 An 'activity' is a single, focused thing that the user can do. Almost all activities interact with the user, so the Activity class takes care of creating a window for you in which you can place your UI with setContentView(View). While activities are often presented to the user as full-screen windows, they can also be used in other ways: as floating windows (via a theme with windowIsFloating set) or embedded inside of another activity (using ActivityGroup).
   
 'Build Tools' is a component of the Android SDK required for building Android application code and is installed in the <sdk>/build-tools/ directory.
+  
+'DDMS' Dalvik Debug Monitor Server
+
+'ADB' Android Debug Bridge
 
   
 (res/)R(.java)
@@ -155,14 +159,22 @@ android.sourceSets {
 }
 to the module's build.gradle.
 
-
+=================
 Naming convention
 =================
   'm' prefix stand for 'member' to indicate that a variable is a member of a class (i.e. for cases when you dont use an IDE).
 
- 
+======
 MetaIO
---/---
+======
   Creating a new project:
   1. Create as usual
   2. Import metaioSDK module: MetaioSDK/_Android/metaioSDK
+  
+  
+========
+DEBUGING
+========
+ Сopy selected files from Android with 'adb pull':
+  adb pull /data/anr/traces.txt C:\Users\bowli\Tools\Android\temp
+
