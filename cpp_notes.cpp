@@ -6,9 +6,20 @@ GENERAL
 ---/---
 system('pause'); // pause program (e.g. to keep a console program from exiting afer it finishes)
 
+Header files .h
+  Essentially contain forward declarations.
+
+  <iostream> doesn''t have .h ending, for historical reasons. There''re .h versions for some files, however they are old. At some point ANSII committee added all standard functionality to std:: namespace, that''s when the files without .h extentions were added, to keep the old ones and preserve compatibility with existing software.
+    
+    Rule: if there''s a no-.h version use that; if there''s only .h version or you create your headers, use .h.
+    
+    All code in .h files will get coppied in all files, which include it. This could work for the small projects, but they will get larger and larger with each include.
+
 
 VECTOR
 ---/--
+  pointer to the data (structured as array): &vec[0]
+
   'format': vector<DataType> nameOfVector
 
   'printing'
