@@ -6,6 +6,7 @@ Shortcuts
   Shift + C - cursor to the center
   Shift + S - a Snap Menu to snap cursor to the selected stuff or vice versa
   ? - remove duplicates (vertecies, faces, etc.)
+  Shift G - selection options (Children)
   
   
 Transformation
