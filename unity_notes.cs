@@ -84,7 +84,26 @@ Mobile/.:
 	eats less resources
 	may give a lower quality output
 	may also leave out some of the full shader features
-
+	
+"Standard Shader"
+	'Render modes':
+		* Opaque - for most normal objects
+		* Cutout - smth about cutting out parts of the model using alpha
+		* Fade - to be able to fade out the object
+		* Transparent - for objects such as glass, etc.
+	'Main maps' - define how the object looks:
+		* Albedo
+			A color or a texture can be used
+		* Metalic || Specular (for different PBS approaches ? TODO: google)
+			A texture or a slider can be used.
+				When texture is used, the R component sets the Metalic-ness / Specular-ness (BG are ignored) and the A channel sets the Smoothness (however for the Metalness all the RGB channels can be filled to make texture look grayscale).
+				When a color is used, push the color to white to make a 'surface into mirror'
+			- Smoothness - the more smooth the surface is, the less diffuse (more specular, mirror-like) it behaves.
+		* Emmision
+			Color option becomes visible when the value >0.
+			Emmision texture can be applied (white - emissive spots). Textures can be one colored or with multiple colors to simulate e.g. computer screen.
+	'Secondary maps'
+		Details on top the Main maps.
 
 Unity methods
 -----/-------
