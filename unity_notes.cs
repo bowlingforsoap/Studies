@@ -163,6 +163,8 @@ Audio Editing
 		- example of snapshots: paused (music volume preset when paused), unpaused
 		- change AudioMixer's properties when Snapshot is selected to affect this Snapshot
 		- use AudioMixerSnapshot#transitionTo(float numSeconds) to tansition to subject Snapshot in numSeconds
+	Group (aka a channel) see below
+	View - allows to contorl what is shown in the AudioMixer view. Control what is shown by toggling the "Eye" symbol left of Groups.
 	
 
 	Workflow:
@@ -171,6 +173,7 @@ Audio Editing
 			- to link AudioMixer to Group in another AudioMixed: drag one onto another -> choose the group
 		3. "Add.." to Add Effects (see below)
 		4. RMB -> Expose ".." to script, to make any of the Inspector parameters acceseble through scripting
+			- using UnityEngine.Audio
 			- use AudioMixer#SetFloat to change the value in the script
 			- check Exposed parameters in right corner of AudioMixer Window
 	
@@ -178,6 +181,14 @@ Audio Editing
 		Send - sends output of one group to another
 		Duck Volume - cut volume, when sound data from other Group's Send is above Threshold
 		Lowpass Simple - attenuate (cut) the sound, when above threshold
+	
+	Useful classes:
+		AudioMixerSnapshot	
+		AudioClip
+		AudioSource
+
+	Useful functions:
+		AudioMixerSnapshot.TransitionIn(float timeInMillis) - transitions to the snapshot over the length of timeInMillis
 
 
 MonoDevelop
