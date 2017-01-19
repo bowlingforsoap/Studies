@@ -8,6 +8,10 @@ Shortcuts
   ? - remove duplicates (vertecies, faces, etc.)
   Shift G - selection options (Children)
   
+Goodies
+---/---
+  View Selected - focuses on the selected object.
+  N -> View -> Clip Distance - to change clipping of the viewport (for laaaaarge models).
   
 Transformation
 ------/-------
@@ -102,7 +106,26 @@ Camera
 UVs
 -/-
   Process: Mark seams (T -> Shading/UVs -> Mark Seam) -> U -> Unwrap
-
+  
+  
+Baking
+--/---
+  Blender Render:
+    1. Highpoly and lowpoly have origins at the same spot, same scale, ...
+    2. UV-unwrap lowpoly
+    3. Add a generated image or whatever to the uwrap of the lowpoly in UV/Image Editor.
+    4. Select Highpoly first, then Lowpoly
+    5. Render -> Bake -> Select type of map to bake -> Bake
+      
+  Cycles:
+    1. same
+    2. same
+    3. Add a material to model
+    3.1 Use nodes
+    3.2 Add -> Texture -> Image Texture -> Output goes into color imput of the material
+    3.3 Select some generated image to bake to in Image Texture node
+    4. same
+    5. same
 
 Freestyle
 ----/----
